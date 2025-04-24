@@ -17,6 +17,11 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
+@View(members = 
+		"anyo, numero, fecha;"+
+		"cliente;"+
+		"detalles;"+
+		"observaciones")
 
 public class Factura {
 	
@@ -42,7 +47,10 @@ public class Factura {
     LocalDate fecha;
  
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @ReferenceView("Simple")
     Cliente cliente;
+    
+    
     
     @ElementCollection
     @ListProperties("producto.numero,producto.descripcion,cantidad")

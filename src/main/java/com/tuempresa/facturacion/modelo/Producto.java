@@ -34,6 +34,10 @@ public class Producto {
 	@Column(length = 32)
 	String fotos;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@DescriptionsList
+	Autor autor;
+	
 	@TextArea
 	String observaciones;
 }
